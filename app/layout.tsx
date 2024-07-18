@@ -4,6 +4,7 @@ import "./globals.css";
 import {
   ClerkProvider
 } from '@clerk/nextjs'
+import ModalProvider from "@/providers/modal-provider";
 // Incorrect function name 'poppins' should be 'Poppins' to match the imported function
 const poppins = Poppins({
    subsets: ["latin"], 
@@ -23,7 +24,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <ModalProvider/>
+        {children}
+        </body>
     </html>
     </ClerkProvider>
   );

@@ -1,39 +1,40 @@
 "use client";
 
 import React from "react";
-import { Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger, } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
-interface ModelProps {
+interface ModalProps {
   title: string;
   description: string;
   isOpen: boolean;
   onClose: () => void;
   children?: React.ReactNode;
 }
-const modal = ({
+
+export const Modal = ({
   title,
   description,
   isOpen,
   onClose,
   children,
-}: ModelProps) => {
+}: ModalProps) => {
+  const onChange = (open : boolean)=>{
+    if(!open){
+      onClose()
+    }
+  }
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={onChange} >
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>
-            {discription}
+            {description}
           </DialogDescription>
         </DialogHeader>
+        {children}
       </DialogContent>
     </Dialog>
   );
 };
 
-export default modal;
