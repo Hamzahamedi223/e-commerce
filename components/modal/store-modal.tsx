@@ -13,7 +13,7 @@ export const StoreModal = () => {
             isOpen={storeModal.isOpen}
             onClose={storeModal.onClose} 
         >
-        form to create the store
+        form to create the storeaa
         </Modal>
     );
 }
